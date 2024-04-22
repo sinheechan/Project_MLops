@@ -19,12 +19,13 @@ if __name__ == '__main__': #  현재 스크립트가 직접 실행될 때만 아
 
     # API 네임스페이스를 정의하고 해당 엔드포인트에 대한 요청을 처리
     # 각 네임스페이스는 특정 기능을 수행하고 해당하는 데이터를 반환
-    @test_api.route('/') # api_test.py
+    
+    @test_api.route('/') # api_test.py => 단순 결과 자료 반환
     class Test(Resource):
         def get(self):
             return "Hello World. This is Test."
     
-    @data.route('/') # 
+    @data.route('/') # getdata_test.py => 커밋 필요
     class GetData(Resource):
         def get(self):
             s = request.args.get('s', default='2024-01-01',type=str)
@@ -37,6 +38,7 @@ if __name__ == '__main__': #  현재 스크립트가 직접 실행될 때만 아
             print(start_date, end_date, type(start_date))
             return data_from_yf.getdata(start_date, end_date) # get 데이터에서 전달할 인자 수정
         
+
     @data_from_db.route('/') # getdata_from_db.py
     class GetDataFromDB(Resource):
         def get(self):
