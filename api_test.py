@@ -11,6 +11,3 @@ recv_data_to_json = json.loads(recv_data) # str -> json
 print(type(recv_data_to_json))
 df = pd.read_json(recv_data_to_json) # json -> dataframe
 print(df)
-
-# 프로그래머 입장에서 테스트
-# 

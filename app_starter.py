@@ -6,6 +6,7 @@ import os
 import data_from_yf
 from project.test import maria_test
 import getdata_from_db
+from datetime import datetime
 
 if __name__ == '__main__':
     app = Flask(__name__)
@@ -24,25 +25,40 @@ if __name__ == '__main__':
     @data.route('/')
     class GetData(Resource):
         def get(self):
-            s = request.args.get('s',1,str) # 시작날짜
-            e = request.args.get('e',1,str) # 끝날짜
+            s = request.args.get('s', default='2024-01-01',type=str)
+            e = request.args.get('e', default='2024-12-31',type=str)
             print(s, e, type(s))
-            return data_from_yf.getdata(s, e) # 시작, 끝날짜 가지고 함수 호출 => data_from_yf.py
+                    # Convert string to datetime
+            start_date = datetime.strptime(s, '%Y-%m-%d')
+            end_date = datetime.strptime(e, '%Y-%m-%d')
+
+            print(start_date, end_date, type(start_date))
+            return data_from_yf.getdata(start_date, end_date)
         
     @data_from_db.route('/')
     class GetDataFromDB(Resource):
         def get(self):
-            s = request.args.get('s',1,str)
-            e = request.args.get('e',1,str)
+            s = request.args.get('s', default='2024-01-01',type=str)
+            e = request.args.get('e', default='2024-12-31',type=str)
             print(s, e, type(s))
-            return getdata_from_db.getdata_from_db(s, e)
+            # Convert string to datetime
+            start_date = datetime.strptime(s, '%Y-%m-%d')
+            end_date = datetime.strptime(e, '%Y-%m-%d')
+
+            print(start_date, end_date, type(start_date))
+            return getdata_from_db.getdata_from_db(start_date, end_date)
         
     @external_data_col.route('/')
     class ExternalDataCollection(Resource):
         def get(self):
-            s = request.args.get('s',1,str)
-            e = request.args.get('e',1,str)
+            s = request.args.get('s', default='2024-01-01',type=str)
+            e = request.args.get('e', default='2024-12-31',type=str)
             print(s, e, type(s))
-            return data_from_yf.getdata(s, e)
+                    # Convert string to datetime
+            start_date = datetime.strptime(s, '%Y-%m-%d')
+            end_date = datetime.strptime(e, '%Y-%m-%d')
+
+            print(start_date, end_date, type(start_date))
+            return data_from_yf.getdata(start_date, end_date)
             
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 9999)), debug=True)
