@@ -1,3 +1,5 @@
+# 서버 구동하는 파일
+
 from flask import Flask, request
 from flask_restx import Api, Resource, reqparse
 import os
@@ -12,8 +14,8 @@ if __name__ == '__main__':
     test_api = api.namespace('test', description='Test API') # 콜 받는 주소
     data = api.namespace('getdata', description='데이터 get API')
     data_from_db = api.namespace('getdatafromdb', description='Getiing data from DB API')
-
-    @test_api.route('/')
+    
+    @test_api.route('/') # 데코레이터 : 이 함수를 다른데에서 사용할 수 없다 
     class Test(Resource):
         def get(self):
             return "Hello World. This is Test."

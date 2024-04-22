@@ -11,3 +11,11 @@ mariadb==1.1.8
 pymysql
 watchdog
 mysqlclient
+
+# Flask 서버 운영
+# DB 연동
+# client(데이터 수집하고 서버로 송신)
+# 자동화 코드 구성 (LSTM을 활용) = 시계열 데이터
+
+# 시계열 데이터를 DB에 넣고 빼고 하는 과정
+# 튜닝
