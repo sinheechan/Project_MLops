@@ -1,3 +1,4 @@
+# collect_files을 감시하면서 12시마다 자료 업데이트
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
@@ -7,7 +8,7 @@ import getdata_from_db
 
 class Target:
     watchDir = os.getcwd()
-    watchDir = 'C:\\Users\\leesc\\PycharmProjects\\Mlops-api-server\\collect_files'
+    watchDir = 'C:/sinheechan.github.io-master/Project_MLops/collect_files'
     #watchDir에 감시하려는 디렉토리를 명시한다.
 
     def __init__(self):

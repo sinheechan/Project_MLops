@@ -6,9 +6,9 @@ import pymysql
 from sqlalchemy import create_engine
 
 # localhost = 내 ip
-conn = pymysql.connect(host='localhost', user='root', password='' ,
+conn = pymysql.connect(host='localhost', user='root', password='cloud9921!' ,
                        db='samsung', charset='utf8')
-query = 'select * from samsung.20231216' # SQL 쿼리문 
+query = 'select * from samsung.20240422' # SQL 쿼리문 
 df = pd.read_sql_query(query,conn) # pandas에서 호출해서 db에 담는 부분
 print(df)
 

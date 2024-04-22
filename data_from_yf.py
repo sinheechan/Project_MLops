@@ -9,7 +9,7 @@ import yfinance as yf
 from flask import jsonify
 yf.pdr_override()
 
-def getdata(s, e,stocks):
+def getdata(s, e, stocks):
     dic = dict()
     '''
     y = s[0:4]
