@@ -23,4 +23,8 @@ mysqlclient
 
 # app_starter : 서버 구동
 # df_to_excel : 주식데이터 df
-# api_test.py : 날짜를 전달
+# api_test.py : 날짜를 전달 => temp 파일 반환
+#               => 날짜를 지정해서 콜을 하면 수집을 해서 df로 변경해줌
+
+# postman 툴을 활용해서 사내 원하는 문서에 전달하는 기능
+# 

@@ -24,10 +24,10 @@ if __name__ == '__main__':
     @data.route('/')
     class GetData(Resource):
         def get(self):
-            s = request.args.get('s',1,str)
-            e = request.args.get('e',1,str)
+            s = request.args.get('s',1,str) # 시작날짜
+            e = request.args.get('e',1,str) # 끝날짜
             print(s, e, type(s))
-            return data_from_yf.getdata(s, e)
+            return data_from_yf.getdata(s, e) # 시작, 끝날짜 가지고 함수 호출 => data_from_yf.py
         
     @data_from_db.route('/')
     class GetDataFromDB(Resource):
