@@ -27,4 +27,6 @@ mysqlclient
 #               => 날짜를 지정해서 콜을 하면 수집을 해서 df로 변경해줌
 
 # postman 툴을 활용해서 사내 원하는 문서에 전달하는 기능
-# 
+
+# app_starter.py
+# data_from_yf.py
