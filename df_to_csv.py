@@ -11,7 +11,7 @@ df = pdr.get_data_yahoo('005930.KS', start, end)
 
 print(df)
 
-df.to_csv(filename + '_df.csv')
+df.to_csv("20240422_test" + '_df.csv')
 
 # Excel 변환 방식
 #df.to_excel(filename + '_df.xlsx') # If you want to extract excel, use this line 
