@@ -45,6 +45,6 @@ class Handler(FileSystemEventHandler):
     def on_modified(self, event): #파일, 디렉터리가 수정되면 실행
         print(event)
     '''
-if __name__ == "__main__": #본 파일에서 실행될 때만 실행되도록 함
+if __name__ == "__main__": # 본 파일에서 실행될 때만 실행되도록 함
     w = Target()
     w.run()
