@@ -2,7 +2,7 @@
 
 <br/>
 
-<img src="MLops_workflow.png">
+<img src="image/MLops_workflow.png">
 
 <br/><br/>
 
