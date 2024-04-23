@@ -35,13 +35,13 @@ def getdata_from_db(s, e):
     return result # df에서 -> result로 수정함
 
 def insert_data():
-    conn = pymysql.connect(host='127.0.0.1', user='root', password='1436', 
+    conn = pymysql.connect(host='127.0.0.1', user='root', password='cloud9921!', 
                            db='samsung', charset='utf8')
     curs = conn.cursor()
     conn.commit()
     
     #####
-    files_Path = 'C:\\Users\\leesc\\PycharmProjects\\Mlops-api-server\\collect_files\\' # 파일들이 들어있는 폴더
+    files_Path = 'C:/sinheechan.github.io-master/Project_MLops/collect_files' # 파일들이 들어있는 폴더
     file_name_and_time_lst = []
     # 해당 경로에 있는 파일들의 생성시간을 함께 리스트로 넣어줌. 
     for f_name in os.listdir(f"{files_Path}"):
@@ -67,11 +67,11 @@ def insert_data():
     print(last_path)
     # 'C:\\Users\\leesc\\PycharmProjects\\Mlops-api-server\collect_files\\data_from_db.csv'
     '''
-    folder_path = r'C:\\Users\\leesc\\PycharmProjects\\Mlops-api-server\\collect_files\\'
+    folder_path = r'C:/sinheechan.github.io-master/Project_MLops/collect_files'
     f = open(folder_path + recent_file_name)
     csvReader = csv.reader(f)
 
-    # DB col : Date, Open, High, Low, Close, Adj Close, Volume
+    # DB 내장된 column : Date, Open, High, Low, Close, Adj Close, Volume
     for row in csvReader: # 1행에 column명이 없는 raw 데이터 형태여야함
         Date = (row[0])
         Open = (row[1])

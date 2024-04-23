@@ -8,11 +8,10 @@ import getdata_from_db
 
 class Target:
     watchDir = os.getcwd()
-    watchDir = 'C:/sinheechan.github.io-master/Project_MLops/collect_files'
-    #watchDir에 감시하려는 디렉토리를 명시한다.
+    watchDir = 'C:/sinheechan.github.io-master/Project_MLops/collect_files' # watcher.py 감시 디렉토리
 
     def __init__(self):
-        self.observer = Observer()   #observer객체를 만듦
+        self.observer = Observer() # observer
 
     def run(self):
         print('Watcher is Started.')
