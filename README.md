@@ -43,13 +43,15 @@
 
   [URL] http://127.0.0.1:9999/api-docs 
 
-* API 홈페이지 이미지
+<img src="image/API_homepage.png">
 
 
-- tes
+- api_test.py 실행으로 서버가 정상적으로 구동하는지 체크한다.
+
+  [URL] http://127.0.0.1:9999/test/
 
 
-
+<img src="image/API_test_result.png">
 
 
 
