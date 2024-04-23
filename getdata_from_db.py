@@ -82,7 +82,7 @@ def insert_data():
         Close = (row[4])
         AdjClose = (row[5])
         Volume = (row[6])
-        sql = "insert into samsung.20240423_test (Date, Open, High, Low, Close, AdjClose, Volume) values (%s, %s, %s, %s, %s, %s, %s)"
+        sql = "insert into samsung.20240423_test (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
         val = (Date, Open, High, Low, Close, AdjClose, Volume)
         curs.execute(sql, val)
     conn.commit()

@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 # localhost = 내 ip
 conn = pymysql.connect(host='localhost', user='root', password='cloud9921!' ,
                        db='samsung', charset='utf8')
-query = 'select * from samsung.20240422' # SQL 쿼리문 # DB명 테이블몇 Check
+query = 'select * from samsung.20240423_test' # SQL 쿼리문 # DB명 테이블몇 Check
 df = pd.read_sql_query(query,conn) # Pandas 호출 및 DB 적재
 print(df)
 
