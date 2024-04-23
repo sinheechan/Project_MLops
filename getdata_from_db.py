@@ -19,7 +19,7 @@ def getdata_from_db(s, e):
         with conn.cursor() as cursor:
 
             # select query
-            select_query = f"select * from samsung.20240422 where Date between '{s}' and '{e}'"
+            select_query = f"select * from samsung.20240423_test where Date between '{s}' and '{e}'"
             cursor.execute(select_query)
             result = cursor.fetchall() # list
 
