@@ -1,4 +1,4 @@
-# 외부데이터 자동 수집 후 JSON으로 바꿔서 결과를 리턴해준다.
+# 외부데이터 자동 수집 후 JSON으로 반환
 
 from datetime import datetime
 import pandas as pd
