@@ -17,6 +17,6 @@ df = pdr.get_data_yahoo('005930.KS', start, end) #TSLA
 csv_file_path = os.path.join(file_path, filename + '_df.csv')
 
 # 데이터프레임을 CSV 파일로 저장
-df.to_csv(csv_file_path, index=False, header = False)
+df.to_csv(csv_file_path, index=True, header = False)
 
 print("CSV 파일이 저장되었습니다:")

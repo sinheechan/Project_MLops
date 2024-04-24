@@ -42,8 +42,7 @@ if __name__ == '__main__': #  직접 실행될 때 구동
             end_date = datetime.strptime(e, '%Y-%m-%d') # 마감날짜 문자열 Datetime 변환
 
             print(start_date, end_date, type(start_date))
-            
-            return data_from_yf.getdata(start_date, end_date, stocks) # ata_from_yf : get 데이터에서 전달할 인자 수정가능
+            return data_from_yf.getdata(start_date, end_date, stocks)
         
     
     # getdata_from_db.py / 아직 안함
