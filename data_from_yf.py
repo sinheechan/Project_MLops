@@ -29,9 +29,13 @@ def getdata(s, e, stocks):
     filename = datetime.now().strftime("%Y%m%d_%H%M%S")
     df = pdr.get_data_yahoo(stocks, s, e) # TSLA / 005930.KS(삼성) to Postman
     df_to_json = df.to_json()
-    
-    file_path = os.path.join('C:/sinheechan.github.io-master/Project_MLops/collect_files', filename)
-    with open(file_path, 'w') as f:
-        f.write(df_to_json)
+
+    with open("temp.csv", 'w') as f:
+        f.write(df_to_json)    
+
+    # 데이터 프레임 추가
+    now = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"collect_files/df_{now}.csv"
+    df.to_csv(filename, index = True)
         
     return jsonify(df_to_json)

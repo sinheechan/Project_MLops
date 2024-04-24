@@ -38,3 +38,7 @@ mysqlclient
 # data_from_db.csv : python insert_to_db.py를 실행하면 getdata_from_db.py가 실행되어 data_from_db.csv 최신화 및 내 DB주소로 연동(최신화)된다.
 
 # watcher : 원하는 시간에 collect_files에 복사본을 생성하며 생성된 db에 
+
+# api / getdta 함수를 콜하면 지정한 경로에 파일이 생성되고 DB에 저장 ( 1일에 한번 씩 )
+
+# api / getdatafromdb
