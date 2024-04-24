@@ -26,9 +26,9 @@ def getdata(s, e, stocks):
     print(type(df))
     '''
     filename = datetime.now().strftime("%Y%m%d_%H%m%S")
-    df = pdr.get_data_yahoo(s, e, stocks) # TSLA / 005930.KS(삼성) to Postman
+    df = pdr.get_data_yahoo('TSLA', s, e) # TSLA / 005930.KS(삼성) to Postman
     df_to_json = df.to_json()
     with open('temp.csv', 'w') as f:
         f.write(df_to_json)
         
-    return jsonify(df_to_json)
+    return df_to_json
