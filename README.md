@@ -37,25 +37,39 @@
 
 <br/>
 
+#### 2.1 Test Clss
+
+<br/>
+
 - app_starter.py 실행하면 __name__ == __main__ 실행조건이 충족되어 Flask 애플리케이션에 API를 추가합니다.
 
   이 코드를 실행함으로써 API의 버전, 제목, 설명 등을 설정할 수 있습니다.
 
   [URL] http://127.0.0.1:9999/api-docs 
 
+<br/>
+
 <img src="image/API_homepage.png">
 
+<br/>
 
 - api_test.py 실행으로 서버가 정상적으로 구동하는지 체크한다.
 
   [URL] http://127.0.0.1:9999/test/
 
+<br/>
 
 <img src="image/API_test_result.png">
 
+<br/>
 
+#### 2.2 GetData Class
 
-
+- Getdata 클래스는 Test 클래스와 유사하나 data_from_yf 모듈을 호출하여 아래 기능을 수행한다.
+  - 얻고자 하는 사이트의 데이터 주소 or 코드를 입력하여 정보를 가져오는 기능
+  - 가져온 정보를 json 형태로 변환하는 기능
+  - 변환된 json 데이터를 temp.csv 파일로 별도 저장한다.
+  - 기존 json 데이터를 Flask의 jsonify() 함수를 사용하여 JSON 형식의 응답으로 반환한다.
 
 
 
