@@ -13,7 +13,7 @@ if __name__ == '__main__': #  직접 실행될 때 구동
     api = Api(app, version='1.0', title='API 문서 생성', description='개발하면서 문서 동시 작업', doc='/api-docs') # Flask-RESTx를 사용하여 Flask 애플리케이션에 API를 추가
 
     # api 네임스페이스 생성
-    test_api = api.namespace('test', description='Test API') # 함수 경로, 
+    test_api = api.namespace('test', description='Test API를 위한 사이트입니다.') # 함수 경로, 
     data = api.namespace('getdata', description='데이터 get API') 
     data_from_db = api.namespace('getdatafromdb', description='Getiing data from DB API')
     external_data_col = api.namespace('extdatacol', description='External data collection API')
