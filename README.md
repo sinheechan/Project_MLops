@@ -113,16 +113,19 @@
 - DBeaver는 오픈 소스의 다중 데이터베이스 관리 도구로 해당 DB로의 적재 과정을 소개합니다.
   - db_con_test.py : 내가 생성한 DB에 대한 연결을 수행하며 추가적으로 DB 쿼리문을 수행하는 기능
     - DB name : samsung / Table : 20240423_test 
-    - 하지만 이 과정에서 Table 구조가 설정이 안되어 있을 경우 DBeaver 내 '가져오기' 기능으로 테이블을 구성한다.
+    - 하지만 이 과정에서 Table 구조가 설정이 안되어 있을 경우 DBeaver 내 '가져오기' 기능으로 테이블을 구성합니다.
 
+<br/> 
 
+<img src="image/DBeaver_db_con_test.png">
 
+<br/> 
 
+  - insert_to_db.py : getdata_from_db를 실행하는 파일, data_from_db.csv 을 감시하여 현재 시간 기준으로 최신화합니다.
+  - getdata_from_db.py : watcher 이벤트 송신 시 내 DB와 연결 및 데이터를 삽입하는 기능을 수행합니다.
+  - watcher.py : 디렉토리 대상을 감시한 후 일정 주기 별로 getdata_from_db.py에 이벤트를 송신합니다.
 
-
-
-
-
+<img src="image/watcher_getfromdb_data_insert.png">
 
 
 
