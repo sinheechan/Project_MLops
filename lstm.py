@@ -42,7 +42,7 @@ result = np.array(normalized_data)
 # split train and test data
 row = int(round(result.shape[0] * 0.9))
 train = result[:row, :]
-np.random.shuffle(train) #섞기
+np.random.shuffle(train) # 섞기
 
 x_train = train[:, :-1]
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
