@@ -101,7 +101,7 @@
 
 <br/>
 
-<img src="image/Postman.png">
+<img src="image/Postman_stocks_auto.png">
 
 <br/>
 
