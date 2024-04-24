@@ -2,6 +2,7 @@ import os
 import pymysql
 import pandas as pd
 import csv
+from datetime import datetime
 
 def getdata_from_db(s, e):
     # Server connection 
@@ -25,8 +26,10 @@ def getdata_from_db(s, e):
 
             # Result -> DataFrame
             df = pd.DataFrame(result)
-            # print(df)
-            df.to_csv('data_from_db.csv', index=False)
+            # Print DataFrame
+            #print(df)
+            now = datetime.now().strftime("%Y_%m%d_%H%M%S")
+            df.to_csv(f"db_to_df/df_to_db_{now}.csv", index=False)
     finally:
         # Close connection
         conn.close()

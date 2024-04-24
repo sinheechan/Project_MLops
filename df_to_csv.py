@@ -11,7 +11,7 @@ end = datetime.now()
 file_path = 'C:/sinheechan.github.io-master/Project_MLops/collect_files'
 
 filename = datetime.now().strftime("%Y%m%d_%H%m%S")
-df = pdr.get_data_yahoo('005930.KS', start, end)
+df = pdr.get_data_yahoo('005930.KS', start, end) #TSLA
 
 # CSV 파일 경로 설정
 csv_file_path = os.path.join(file_path, filename + '_df.csv')
