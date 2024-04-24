@@ -7,6 +7,7 @@ import pickle
 import json
 import yfinance as yf
 from flask import jsonify
+import os
 yf.pdr_override()
 
 def getdata(s, e, stocks):
@@ -25,10 +26,12 @@ def getdata(s, e, stocks):
     #pic = pd.to_pickle(df, filename + '.pickle')
     print(type(df))
     '''
-    filename = datetime.now().strftime("%Y%m%d_%H%m%S")
+    filename = datetime.now().strftime("%Y%m%d_%H%M%S")
     df = pdr.get_data_yahoo(stocks, s, e) # TSLA / 005930.KS(삼성) to Postman
     df_to_json = df.to_json()
-    with open('temp.csv', 'w') as f:
+    
+    file_path = os.path.join('C:/sinheechan.github.io-master/Project_MLops/collect_files', filename)
+    with open(file_path, 'w') as f:
         f.write(df_to_json)
         
     return jsonify(df_to_json)

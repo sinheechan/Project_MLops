@@ -39,6 +39,7 @@ class Handler(FileSystemEventHandler):
         print(event)
         getdata_from_db.insert_data()
         print("Insert func completed")
+        
     '''
     def on_deleted(self, event): #파일, 디렉터리가 삭제되면 실행
         print(event)
