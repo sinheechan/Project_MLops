@@ -14,7 +14,7 @@ data.head()
 # This is DB test
 start = api_test_db.DBtest() # start 
 print(start, type(start))
-df = pd.read_csv('data_from_db.csv')
+df = pd.read_csv('C:\sinheechan.github.io-master\Project_MLops\collect_files\data_from_db.csv')
 data = pd.DataFrame(df)
 print(data.head())
 
@@ -58,7 +58,7 @@ print(x_train.shape, x_test.shape)
 model = Sequential()
 model.add(LSTM(50, return_sequences=True, input_shape=(50, 1)))
 model.add(LSTM(64, return_sequences=False))
-model.add(Dense(1, activation='linear')) # output 다음날 하루
+model.add(Dense(5, activation='linear')) # output 다음날 하루
 model.compile(loss='mse', optimizer='rmsprop')
 model.summary()
 

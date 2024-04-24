@@ -41,4 +41,6 @@ mysqlclient
 
 # api / getdta 함수를 콜하면 지정한 경로에 파일이 생성되고 DB에 저장 ( 1일에 한번 씩 )
 
-# api / getdatafromdb
+# api / getdatafromdb 함수를 통해서 DB로 조화(원하는 기간) 하고 데이터 분석을 위한 dataframe으로 바꾸기
+
+# lstm.py를 실행하여 dataframe 학습 후 모델파일 및 시각화 파일 저장

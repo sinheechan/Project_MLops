@@ -26,16 +26,15 @@ def getdata(s, e, stocks):
     #pic = pd.to_pickle(df, filename + '.pickle')
     print(type(df))
     '''
-    filename = datetime.now().strftime("%Y%m%d_%H%M%S")
-    df = pdr.get_data_yahoo(stocks, s, e) # TSLA / 005930.KS(삼성) to Postman
+    filename = datetime.now().strftime("%Y%m%d_%H%m%S")
+    df = pdr.get_data_yahoo('TSLA', s, e)
     df_to_json = df.to_json()
+    with open('temp.csv', 'w') as f:
+        f.write(df_to_json)
 
-    with open("temp.csv", 'w') as f:
-        f.write(df_to_json)    
-
-    # 데이터 프레임 추가
-    now = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # Assuming df is your DataFrame
+    now = datetime.now().strftime("%Y_%m%d_%H%M%S")
     filename = f"collect_files/df_{now}.csv"
-    df.to_csv(filename, index = True)
+    df.to_csv(filename, index=False, header = False)
         
     return jsonify(df_to_json)

@@ -30,6 +30,7 @@ def getdata_from_db(s, e):
             #print(df)
             now = datetime.now().strftime("%Y_%m%d_%H%M%S")
             df.to_csv(f"db_to_df/df_to_db_{now}.csv", index=False)
+
     finally:
         # Close connection
         conn.close()
@@ -88,6 +89,7 @@ def insert_data():
         sql = "insert into samsung.20240423_test (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
         val = (Date, Open, High, Low, Close, AdjClose, Volume)
         curs.execute(sql, val)
+        print('Insert completed')
         
     conn.commit()
     f.close()
