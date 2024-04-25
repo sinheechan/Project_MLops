@@ -167,9 +167,9 @@
 <img src="image/getdatafromdb_postman_api.png">
 <br/>
 
-2. Postman API 설정에 따른 결과값이 getdata_from_db.py 에서 설정한 cursor 에 따라
+2. Postman API 설정에 따른 결과값은 getdata_from_db.py 에서 설정한 cursor 에 따라
 
-   특정 기간 동안의 데이터를 가져와서 DataFrame으로 변환한 후, db_to_df 파일에 CSV 파일로 저장하는 과정을 수행합니다.
+   DBeaver에 설정 기간 동안의 데이터를 가져와서 DataFrame으로 변환한 후, db_to_df 파일에 CSV 파일로 저장하는 과정을 수행합니다.
 
 3. lstm.py 모듈을 실행하여 db_to_df 디렉토리에 업로드 파일이 들어올 때 최근 파일만 분석하여 향후 5일간 주가 예측을 수행합니다.
 
