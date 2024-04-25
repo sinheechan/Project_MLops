@@ -6,6 +6,7 @@ import shutil
 import os
 import getdata_from_db
 
+# Target : 감시하는 폴더 
 class Target:
     watchDir = os.getcwd()
     watchDir = 'C:/sinheechan.github.io-master/Project_MLops/collect_files' # watcher.py 감시 디렉토리
@@ -30,26 +31,35 @@ class Target:
 class Handler(FileSystemEventHandler):
 
 # FileSystemEventHandler 클래스를 상속받음.
-# 아래 핸들러들을 오버라이드 함 => 파일, 디렉터리가 move 되거나 rename 되면 실행
+# 아래 핸들러들을 오버라이드 => 파일, 디렉터리 행동에 따른 정의
     
+    # Case 1.파일이 움직일 때 실행
     '''
-    def on_moved(self, event):
+    def on_moved(self, event): 
         print(event)
     
     '''
-    
-    def on_created(self, event): #파일, 디렉터리가 생성되면 실행
+    # Case 2.파일, 디렉터리가 생성되면 실행
+
+    def on_created(self, event):
         print(event)
         getdata_from_db.insert_data()
         print("Insert func completed")
-        
+
+    # Case 3.파일, 디렉터리가 삭제되면 실행 
+       
     '''
-    def on_deleted(self, event): #파일, 디렉터리가 삭제되면 실행
+    def on_deleted(self, event):
         print(event)
-    def on_modified(self, event): #파일, 디렉터리가 수정되면 실행
+    '''
+    # Case 4. 파일,디렉터리가 수정되면 실행
+
+    '''
+    def on_modified(self, event):
         print(event)
     '''
 
-if __name__ == "__main__": # 본 파일에서 실행될 때만 실행되도록 함
+# 본 파일에서 실행될 때만 실행되도록 함
+if __name__ == "__main__":
     w = Target()
     w.run()

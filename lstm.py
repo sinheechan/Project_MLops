@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import LSTM, Dropout, Dense, Activation
 import datetime
-import api_test_db
+import os
 
 # external test
 
@@ -15,13 +15,23 @@ data = api_test.df
 data.head()
 '''
 
-# DB test
+# 데이터 불러오기
 
-start = api_test_db.DBtest() # start 
-print(start, type(start))
-df = pd.read_csv('C:\sinheechan.github.io-master\Project_MLops\collect_files\data_from_db.csv')
-data = pd.DataFrame(df)
-print(data.head())
+directory = r'C:/sinheechan.github.io-master/Project_MLops/db_to_df'
+files = os.listdir(directory)
+
+if files:  # 파일이 존재할 경우
+    sorted_file = sorted(files, key=lambda x: os.path.getmtime(os.path.join(directory, x)), reverse=True) # 파일들의 수정된 시간을 기준으로 정렬
+    recent_file = sorted_file[0]  # 정렬된 목록에서 가장 첫 번째 파일이 최근에 업로드된 파일
+
+    recent_file_path = os.path.join(directory, recent_file)
+    data = pd.read_csv(recent_file_path)
+
+    print("적용 파일 명:", recent_file)
+    print(data.head())
+
+else:
+    print("디렉토리에 파일이 존재하지 않습니다.")
 
 # 평균값을 계산한다. => 이후 주식 예측 값 예측
 
@@ -30,7 +40,7 @@ low_prices = data['Low'].values
 mid_prices = (high_prices + low_prices) / 2
 
 # 윈도우 생성 => 최근 50일을 기준으로 함
-seq_len = 50
+seq_len = 60
 sequence_length = seq_len + 1
 
 result = []
@@ -62,9 +72,9 @@ print(x_train.shape, x_test.shape)
 
 # 모델 생성
 model = Sequential()
-model.add(LSTM(50, return_sequences=True, input_shape=(50, 1)))
+model.add(LSTM(60, return_sequences=True, input_shape=(60, 1))) # 60일 기준으로 하여 shape 60
 model.add(LSTM(64, return_sequences=False))
-model.add(Dense(5, activation='linear')) # output 다음날 하루
+model.add(Dense(5, activation='linear')) # 5일치 예측 수행
 model.compile(loss='mse', optimizer='rmsprop')
 model.summary()
 
@@ -75,15 +85,24 @@ model.fit(x_train, y_train,
     epochs=20)
 
 # 모델 저장
+save_model_dir = r'C:/sinheechan.github.io-master/Project_MLops/models'
 filename = datetime.datetime.now().strftime("%Y%m%d_%H%m%S")
-model.save(filename + '_my_model.h5')
+model_save = os.path.join(save_model_dir, filename + '_my_model.h5')
 
-# 예측 수행
+model.save(model_save)
+
+# 예측 수행 / 시각화
 pred = model.predict(x_test)
 fig = plt.figure(facecolor='white', figsize=(20, 10))
 ax = fig.add_subplot(111)
 ax.plot(y_test, label='True')
 ax.plot(pred, label='Prediction')
 ax.legend()
-plt.savefig(filename + '_result.jpg', format='jpeg')
-plt.show()
+
+# 예측 그래프 저장
+
+save_map_dir = r'C:/sinheechan.github.io-master/Project_MLops/results'
+filename = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+image_save = os.path.join(save_map_dir, filename + '_result.jpg')
+
+plt.savefig(image_save, format='jpeg')

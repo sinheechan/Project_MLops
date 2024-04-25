@@ -28,7 +28,7 @@ if __name__ == '__main__': #  직접 실행될 때 구동
         def get(self):
             return "Test를 위한 서버입니다."
     
-    # getdata
+    # GetData - (postman) - data_from_yf - watcher - getdata_from_db.py
     @data.route('/')
     class GetData(Resource):
         def get(self):
@@ -45,7 +45,7 @@ if __name__ == '__main__': #  직접 실행될 때 구동
             return data_from_yf.getdata(start_date, end_date, stocks)
         
     
-    # getdata_from_db.py / 아직 안함
+    # getdata_from_db.py / 볼러온 데이터 DF로 변환
     @data_from_db.route('/')
     class GetDataFromDB(Resource):
         def get(self):
