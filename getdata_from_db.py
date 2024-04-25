@@ -89,10 +89,10 @@ def insert_data():
         sql = "insert into samsung.20240423_test (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
         val = (Date, Open, High, Low, Close, AdjClose, Volume)
         curs.execute(sql, val)
-        print('Insert completed')
+
         
     conn.commit()
     f.close()
     conn.close()
 
-print("데이터 삽입이 완료되었습니다.")
+print('Insert completed')

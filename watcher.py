@@ -14,7 +14,7 @@ class Target:
         self.observer = Observer() # observer
 
     def run(self):
-        print('Watcher가 정상 실행되었습니다..')
+        print('Watcher가 정상 실행되었습니다.')
         event_handler = Handler()
         self.observer.schedule(event_handler, self.watchDir, 
                                recursive=True)
@@ -49,7 +49,7 @@ class Handler(FileSystemEventHandler):
     def on_modified(self, event): #파일, 디렉터리가 수정되면 실행
         print(event)
     '''
-    
+
 if __name__ == "__main__": # 본 파일에서 실행될 때만 실행되도록 함
     w = Target()
     w.run()
