@@ -1,3 +1,5 @@
+# 주식 데이터를 사용하여 LSTM을 활용한 시계열 예측 모델을 구축
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,32 +8,36 @@ from keras.layers import LSTM, Dropout, Dense, Activation
 import datetime
 import api_test_db
 
-# This is external data collection test
+# external test
+
 '''
 data = api_test.df
 data.head()
 '''
-# This is DB test
+
+# DB test
+
 start = api_test_db.DBtest() # start 
 print(start, type(start))
 df = pd.read_csv('C:\sinheechan.github.io-master\Project_MLops\collect_files\data_from_db.csv')
 data = pd.DataFrame(df)
 print(data.head())
 
-# Compute mid price
+# 평균값을 계산한다. => 이후 주식 예측 값 예측
+
 high_prices = data['High'].values
 low_prices = data['Low'].values
 mid_prices = (high_prices + low_prices) / 2
 
-# Create Windows
-seq_len = 50 # 최근 50일
+# 윈도우 생성 => 최근 50일을 기준으로 함
+seq_len = 50
 sequence_length = seq_len + 1
 
 result = []
 for index in range(len(mid_prices) - sequence_length):
     result.append(mid_prices[index: index + sequence_length])
 
-# Normalization
+# 데이터 Normalization(정규화)
 normalized_data = []
 for window in result:
     normalized_window = [((float(p) / float(window[0])) - 1) for p in window]
@@ -39,10 +45,10 @@ for window in result:
 
 result = np.array(normalized_data)
 
-# split train and test data
+# train / test data 분할
 row = int(round(result.shape[0] * 0.9))
 train = result[:row, :]
-np.random.shuffle(train) # 섞기
+np.random.shuffle(train)
 
 x_train = train[:, :-1]
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
@@ -54,7 +60,7 @@ y_test = result[row:, -1]
 
 print(x_train.shape, x_test.shape)
 
-# Build Model
+# 모델 생성
 model = Sequential()
 model.add(LSTM(50, return_sequences=True, input_shape=(50, 1)))
 model.add(LSTM(64, return_sequences=False))
@@ -62,17 +68,17 @@ model.add(Dense(5, activation='linear')) # output 다음날 하루
 model.compile(loss='mse', optimizer='rmsprop')
 model.summary()
 
-# Train
+# 훈련
 model.fit(x_train, y_train,
     validation_data=(x_test, y_test),
     batch_size=10,
     epochs=20)
 
-# Model save
+# 모델 저장
 filename = datetime.datetime.now().strftime("%Y%m%d_%H%m%S")
 model.save(filename + '_my_model.h5')
 
-# Predict
+# 예측 수행
 pred = model.predict(x_test)
 fig = plt.figure(facecolor='white', figsize=(20, 10))
 ax = fig.add_subplot(111)
