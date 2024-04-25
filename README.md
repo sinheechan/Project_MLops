@@ -143,17 +143,17 @@
 
 - 상기 모듈을 토대로 사용자 입장에서 yahoofinance 데이터를 가져오는 방법을 소개합니다.
 
-  1. app_starter.py 모델을 실행합니다. (서버 구축)
-  2. test_api 클래스를 활용하여 API 서버의 정상 구동 여부를 체크합니다.
-  3. GetData 클래스를 활용하여 Postman에서 s(시작일자), e(마감일자), stocks(주식코드)를 입력합니다. **(직접 실행1)**
+1. app_starter.py 모델을 실행합니다. (서버 구축)
+2. test_api 클래스를 활용하여 API 서버의 정상 구동 여부를 체크합니다.
+3. GetData 클래스를 활용하여 Postman에서 s(시작일자), e(마감일자), stocks(주식코드)를 입력합니다. **(직접 실행1)**
 
-    <br/>
-     <img src="image/getdata_postman_api.png">
-    <br/>
+<br/>
+<img src="image/getdata_postman_api.png">
+<br/>
 
-  4. Postman API에서 얻어온 데이터들이 모두 collect_files에 csv파일 형태로 저장됩니다.
-  5. collect_files에 파일이 저장되면 watcher.py 모듈이 변화를 감지하여 getdata_from_db.py 모듈을 실행시킵니다.
-  6. getdata_from_db.py은 DBeaver에 연결된 테이블에 그 내용을 최신화시킵니다. => 사내 DB 적재
+4. Postman API에서 얻어온 데이터들이 모두 collect_files에 csv파일 형태로 저장됩니다.
+5. collect_files에 파일이 저장되면 watcher.py 모듈이 변화를 감지하여 getdata_from_db.py 모듈을 실행시킵니다.
+6. getdata_from_db.py은 DBeaver에 연결된 테이블에 그 내용을 최신화시킵니다. => 사내 DB 적재
 
 ### 5.2 데이터 적재 
 
@@ -161,19 +161,19 @@
 
 - 분석가 입장에서 yahoofinance 에서 가져온 데이터를 적재 및 변환하는 방법을 소개합니다.
 
-  1. GetDataFromDB 클래스를 활용하여 Postman 에 s(시작일자), e(마감일자), stocks(주식코드)를 입력합니다. **(직접실행2)**  
+1. GetDataFromDB 클래스를 활용하여 Postman 에 s(시작일자), e(마감일자), stocks(주식코드)를 입력합니다. **(직접실행2)**  
 
-    <br/>
-     <img src="image/getdatafromdb_postman_api.png">
-    <br/>
+<br/>
+<img src="image/getdatafromdb_postman_api.png">
+<br/>
 
-  2. Postman API 설정에 따른 결과값이 getdata_from_db.py 에서 설정한 cursor 에 따라
+2. Postman API 설정에 따른 결과값이 getdata_from_db.py 에서 설정한 cursor 에 따라
 
-    특정 기간 동안의 데이터를 가져와서 DataFrame으로 변환한 후, db_to_df 파일에 CSV 파일로 저장하는 과정을 수행합니다.
+   특정 기간 동안의 데이터를 가져와서 DataFrame으로 변환한 후, db_to_df 파일에 CSV 파일로 저장하는 과정을 수행합니다.
 
-  3. lstm.py 모듈을 실행하여 db_to_df 디렉토리에 업로드 파일이 들어올 때 최근 파일만 분석하여 향후 5일간 주가 예측을 수행합니다.
+3. lstm.py 모듈을 실행하여 db_to_df 디렉토리에 업로드 파일이 들어올 때 최근 파일만 분석하여 향후 5일간 주가 예측을 수행합니다.
 
-  4. 예측을 수행한 모델은 models 파일에 저장되며 예측 그래프는 models 폴더에 저장됩니다.
+4. 예측을 수행한 모델은 models 파일에 저장되며 예측 그래프는 models 폴더에 저장됩니다.
 
 
 
