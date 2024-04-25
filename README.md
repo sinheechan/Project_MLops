@@ -148,7 +148,7 @@
   3. GetData 클래스를 활용하여 Postman에서 s(시작일자), e(마감일자), stocks(주식코드)를 입력합니다. **(직접 실행1)**
 
     <br/>
-     <img src="">
+     <img src="image/getdata_postman_api.png">
     <br/>
 
   4. Postman API에서 얻어온 데이터들이 모두 collect_files에 csv파일 형태로 저장됩니다.
@@ -164,7 +164,7 @@
   1. GetDataFromDB 클래스를 활용하여 Postman 에 s(시작일자), e(마감일자), stocks(주식코드)를 입력합니다. **(직접실행2)**  
 
     <br/>
-     <img src="">
+     <img src="image/getdatafromdb_postman_api.png">
     <br/>
 
   2. Postman API 설정에 따른 결과값이 getdata_from_db.py 에서 설정한 cursor 에 따라
