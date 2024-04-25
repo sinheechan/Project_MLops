@@ -4,6 +4,7 @@ import pandas as pd
 import csv
 from datetime import datetime
 
+# DB 연결 및 csv 파일 데이터프레임으로 반환
 def getdata_from_db(s, e):
     # Server connection 
     conn = pymysql.connect( 
@@ -16,38 +17,35 @@ def getdata_from_db(s, e):
     )
     try:
         
-        # Create cursor
+        # cursor 생성
         with conn.cursor() as cursor:
 
-            # select query
+            # select 쿼리
             select_query = f"select * from samsung.20240423_test where Date between '{s}' and '{e}'"
             cursor.execute(select_query)
             result = cursor.fetchall() # list
 
-            # Result -> DataFrame
+            # Result -> DataFrame으로 반환
             df = pd.DataFrame(result)
-            # Print DataFrame
-            #print(df)
             now = datetime.now().strftime("%Y_%m%d_%H%M%S")
             df.to_csv(f"db_to_df/df_to_db_{now}.csv", index=False)
 
     finally:
-        # Close connection
         conn.close()
 
-    return result # df에서 -> result로 수정함
+    return result
 
+# 데이터 삽입
 def insert_data():
     conn = pymysql.connect(host='127.0.0.1', user='root', password='cloud9921!', 
                            db='samsung', charset='utf8')
     curs = conn.cursor()
     conn.commit()
     
-    #####
     files_Path = 'C:/sinheechan.github.io-master/Project_MLops/collect_files/' # 파일들이 들어있는 폴더
     file_name_and_time_lst = []
     
-    # 해당 경로에 있는 파일들의 생성시간을 함께 리스트로 넣어줌. 
+    # 해당 경로에 있는 파일들의 생성시간을 함께 리스트로 넣어줌.
     for f_name in os.listdir(f"{files_Path}"):
         written_time = os.path.getctime(f"{files_Path}{f_name}")
         file_name_and_time_lst.append((f_name, written_time))
@@ -55,7 +53,7 @@ def insert_data():
     # 생성시간 역순으로 정렬하고, 
     sorted_file_lst = sorted(file_name_and_time_lst, key=lambda x: x[1], reverse=True)
     
-    # 가장 앞에 이는 놈을 넣어준다.
+    # 가장 앞에 파일을 넣어준다.
     recent_file = sorted_file_lst[0]
     recent_file_name = recent_file[0]
     path = str(os.path.abspath(recent_file_name))
@@ -95,4 +93,4 @@ def insert_data():
     f.close()
     conn.close()
 
-print('Insert completed')
+print('Insert 가 완료되었습니다')
