@@ -50,33 +50,20 @@ def insert_data():
         written_time = os.path.getctime(f"{files_Path}{f_name}")
         file_name_and_time_lst.append((f_name, written_time))
     
-    # 생성시간 역순으로 정렬하고, 
+    # 생성시간 역순으로 정렬
     sorted_file_lst = sorted(file_name_and_time_lst, key=lambda x: x[1], reverse=True)
     
-    # 가장 앞에 파일을 넣어준다.
     recent_file = sorted_file_lst[0]
     recent_file_name = recent_file[0]
     path = str(os.path.abspath(recent_file_name))
     ##### 
-    '''
-    new_path = []
-    for i, s in enumerate(path):
-        new_path.append(s)
-        if s == "'\'":
-            s[i+1].append["'\'"]
-    #new_path = str(new_path)
-    #print(new_path, type(new_path)) # list
-    last_path = ''.join([x if x != '\\' else '\\\\' for x in new_path])
-    last_path = str(last_path)
-    print(last_path)
-    # 'C:\\Users\\leesc\\PycharmProjects\\Mlops-api-server\collect_files\\data_from_db.csv'
-    '''
+   
     folder_path = r'C:/sinheechan.github.io-master/Project_MLops/collect_files/'
     f = open(folder_path + recent_file_name)
     csvReader = csv.reader(f)
 
-    # DB 내장된 column : Date, Open, High, Low, Close, Adj Close, Volume
-    for row in csvReader: # 1행에 column명이 없는 raw 데이터 형태여야함
+    # DB column : Date, Open, High, Low, Close, Adj Close, Volume
+    for row in csvReader:
         Date = (row[0])
         Open = (row[1])
         High = (row[2])
@@ -84,7 +71,7 @@ def insert_data():
         Close = (row[4])
         AdjClose = (row[5])
         Volume = (row[6])
-        sql = "insert into samsung.20240423_test (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
+        sql = "insert into samsung.20240422 (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
         val = (Date, Open, High, Low, Close, AdjClose, Volume)
         curs.execute(sql, val)
 
@@ -93,4 +80,4 @@ def insert_data():
     f.close()
     conn.close()
 
-print('Insert 가 완료되었습니다')
+print('Insert 가 완료되었습니다!!')

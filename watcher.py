@@ -6,13 +6,13 @@ import shutil
 import os
 import getdata_from_db
 
-# Target : 감시하는 폴더 
+
 class Target:
     watchDir = os.getcwd()
     watchDir = 'C:/sinheechan.github.io-master/Project_MLops/collect_files' # watcher.py 감시 디렉토리
 
     def __init__(self):
-        self.observer = Observer() # observer
+        self.observer = Observer()
 
     def run(self):
         print('Watcher가 정상 실행되었습니다.')
@@ -30,9 +30,7 @@ class Target:
 
 class Handler(FileSystemEventHandler):
 
-# FileSystemEventHandler 클래스를 상속받음.
-# 아래 핸들러들을 오버라이드 => 파일, 디렉터리 행동에 따른 정의
-    
+
     # Case 1.파일이 움직일 때 실행
     '''
     def on_moved(self, event): 
@@ -58,8 +56,7 @@ class Handler(FileSystemEventHandler):
     def on_modified(self, event):
         print(event)
     '''
-
-# 본 파일에서 실행될 때만 실행되도록 함
+    
 if __name__ == "__main__":
     w = Target()
     w.run()

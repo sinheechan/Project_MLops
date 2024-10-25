@@ -4,7 +4,6 @@ import pandas as pd
 import yfinance as yf
 import os
 
-# Pandas DataReader가 Yahoo Finance 데이터를 가져오는 방법을 수정
 yf.pdr_override()
 
 start = datetime(2023, 1, 1)
