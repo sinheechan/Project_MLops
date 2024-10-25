@@ -8,6 +8,6 @@ from sqlalchemy import create_engine
 conn = pymysql.connect(host='localhost', user='root', password='cloud9921!' ,
                        db='samsung', charset='utf8')
 
-query = 'select * from samsung.20240422' # SQL
+query = 'select * from samsung.20240423_test' # SQL
 df = pd.read_sql_query(query,conn) # Pandas 호출 & DB 적재
 print(df)

@@ -42,7 +42,7 @@ class Handler(FileSystemEventHandler):
     def on_created(self, event):
         print(event)
         getdata_from_db.insert_data()
-        print("Insert func completed")
+        print("Insert가 완료되었습니다.")
 
     # Case 3.파일, 디렉터리가 삭제되면 실행 
        
@@ -56,7 +56,7 @@ class Handler(FileSystemEventHandler):
     def on_modified(self, event):
         print(event)
     '''
-    
+
 if __name__ == "__main__":
     w = Target()
     w.run()

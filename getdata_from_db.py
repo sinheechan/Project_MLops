@@ -23,7 +23,7 @@ def getdata_from_db(s, e):
             # select 쿼리
             select_query = f"select * from samsung.20240423_test where Date between '{s}' and '{e}'"
             cursor.execute(select_query)
-            result = cursor.fetchall() # list
+            result = cursor.fetchall()
 
             # Result -> DataFrame으로 반환
             df = pd.DataFrame(result)
@@ -71,7 +71,7 @@ def insert_data():
         Close = (row[4])
         AdjClose = (row[5])
         Volume = (row[6])
-        sql = "insert into samsung.20240422 (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
+        sql = "insert into samsung.20240423_test (`Date`, `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume`) values (%s, %s, %s, %s, %s, %s, %s)"
         val = (Date, Open, High, Low, Close, AdjClose, Volume)
         curs.execute(sql, val)
 
