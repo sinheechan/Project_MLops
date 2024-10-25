@@ -99,4 +99,4 @@ filename = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 image_save = os.path.join(save_map_dir, filename + '_result.jpg')
 
 plt.savefig(image_save, format='jpeg')
-plt.show()
+# plt.show()
