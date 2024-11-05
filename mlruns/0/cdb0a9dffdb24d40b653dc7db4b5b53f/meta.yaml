@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/cdb0a9dffdb24d40b653dc7db4b5b53f/artifacts
+end_time: 1730800018380
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cdb0a9dffdb24d40b653dc7db4b5b53f
+run_name: stylish-ray-998
+run_uuid: cdb0a9dffdb24d40b653dc7db4b5b53f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730799990712
+status: 3
+tags: []
+user_id: gmlck
