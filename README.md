@@ -1,8 +1,5 @@
 # Project_MLops
 
-<br/>
-
-<img src="image/MLops_workflow.png">
 
 <br/><br/>
 
@@ -16,7 +13,7 @@
 
 ## Content
 
-1. Module 소개
+1. Model 소개
 2. 데이터 가져오기
 3. 데이터 적재
 
@@ -26,10 +23,27 @@
 
 <br/>
 
-- app_starter.py : 서버를 구동하는 메인 모듈입니다. ( __name__ == __main__ )
-- api_test.py : 데이터를 요청하고 서버 응답자료를 받아 JSON 반환하고 DataFrame 형태로 처리합니다.
-- getdata_from_db.py : watcher모델에서 지정한 시간에 맞춰 감시폴더 내 DB 최신화합니다.
-- external_api_test.py : 외부데이터를 문자열로 수집하여 그 값을 반환합니다.
+- app_starter.py : 서버를 구동하는 메인 모듈입니다.
+
+  ① api_test.py : API 생성 테스트, swagger 문서화하여 공유 자동화, 유지보수 설계
+
+  ② data_from_yf.py : Postman 연동, 주식데이터 기반 날짜와 종목 인자 입력 후 외부데이터 가져오기
+
+  ③ getdata_from_db.py : 수집 데이터가 들어오면 DBeaver 적재, watcher모델에서 지정한 시간에 맞춰 감시폴더 내 DB 최신화
+
+  ④ external_api_test.py : 외부데이터를 문자열로 수집하여 그 값을 반환합니다.
+
+- Test를 위한 모듈입니다.
+
+  ① df_to_csv_test.py : 주식데이터 받아와서 DBeaver에 테스트겸 수동 적재 => 20240423_test
+
+  ② Postman 활용해 getdata API 로 인자만 조정해서 원하는 날짜, 종목 추출 가능하도록 테스트
+
+  ③ db_con_test.py : db와 파이썬 프로그렘이 연동되었는지 확인하기위해 db 테이블 목록 추출
+
+<br/>
+
+<img src="image/MLops_0.png">
 
 <br/><br/>
 
