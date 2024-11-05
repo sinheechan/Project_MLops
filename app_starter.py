@@ -10,7 +10,7 @@ from datetime import datetime
 
 if __name__ == '__main__':
     app = Flask(__name__)
-    api = Api(app, version='1.0', title='API 문서 생성', description='개발하면서 문서 동시 작업 to swagger')
+    api = Api(app, version='1.0', title='API 문서 생성', description='To swagger')
 
     test_api = api.namespace('test', description='Test API를 위한 사이트입니다.') # test
     
