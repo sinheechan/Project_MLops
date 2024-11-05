@@ -4,8 +4,8 @@ from flask import Flask, request
 from flask_restx import Api, Resource, reqparse
 import os
 import data_from_yf
-from project.test import maria_test # db 연결하는 모듈
-import getdata_from_db # getdata_from_db.py
+from project.test import maria_test
+import getdata_from_db
 from datetime import datetime
 
 if __name__ == '__main__': #  직접 실행
